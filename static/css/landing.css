@@ -1,0 +1,212 @@
+/* ------------------------------------------------------------------ */
+/* Hero — landing page redesign                                        */
+/* ------------------------------------------------------------------ */
+
+.lhero {
+    background: #ffffff;
+    padding: 4rem 2rem 5rem;
+    text-align: center;
+}
+
+.lhero-inner {
+    max-width: 780px;
+    margin: 0 auto;
+}
+
+/* Badge */
+.lhero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: #eaf7f0;
+    color: #1f7a45;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 0.45rem 1.1rem;
+    border-radius: 999px;
+    margin-bottom: 2rem;
+    border: 1px solid #c5e8d5;
+}
+
+.lhero-dot {
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #2db365;
+    flex-shrink: 0;
+}
+
+/* Title */
+.lhero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 5.5vw, 4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--ink);
+    letter-spacing: -0.02em;
+    margin-bottom: 1.5rem;
+}
+
+.lhero-title-green {
+    color: #2db365;
+    font-style: normal;
+}
+
+/* Subtitle */
+.lhero-subtitle {
+    font-size: 1.05rem;
+    color: var(--ink-muted);
+    line-height: 1.7;
+    margin-bottom: 2.25rem;
+}
+
+/* Buttons */
+.lhero-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 3.5rem;
+}
+
+.lhero-btn {
+    display: inline-block;
+    background: var(--ink);
+    color: #ffffff;
+    padding: 0.75rem 1.75rem;
+    border-radius: 10px;
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+
+.lhero-btn:hover { background: #2a2a2a; }
+
+/* Dashboard mockup wrapper */
+.lhero-dashboard {
+    background: #f2f2f0;
+    border-radius: 16px;
+    padding: 1.1rem 1.1rem 0;
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.08);
+    text-align: left;
+    overflow: hidden;
+}
+
+/* Chrome dots row */
+.ldash-chrome {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 0 0.25rem 1rem;
+}
+
+.ldash-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.ldash-dot-red    { background: #ff5f57; }
+.ldash-dot-yellow { background: #febc2e; }
+.ldash-dot-green  { background: #28c840; }
+
+/* Dashboard body (white area) */
+.ldash-body {
+    background: #ffffff;
+    border-radius: 10px 10px 0 0;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Stat cards row */
+.ldash-stats {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+}
+
+.ldash-stat {
+    background: #ffffff;
+    border: 1px solid #e8e5de;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+}
+
+.ldash-stat-label {
+    font-size: 0.78rem;
+    color: var(--ink-muted);
+    font-weight: 500;
+}
+
+.ldash-stat-value {
+    font-family: var(--font-display);
+    font-size: 1.6rem;
+    color: var(--ink);
+    line-height: 1.1;
+}
+
+.ldash-stat-sub {
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.ldash-sub-red   { color: #e03a3a; }
+.ldash-sub-green { color: #2db365; }
+.ldash-sub-muted { color: var(--ink-muted); }
+
+/* Bar chart section */
+.ldash-bars {
+    background: #ffffff;
+    border: 1px solid #e8e5de;
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+}
+
+.ldash-bar-row {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ldash-bar-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--ink-soft);
+    text-align: right;
+}
+
+.ldash-bar-track {
+    height: 8px;
+    background: #ebebeb;
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.ldash-bar-fill {
+    height: 100%;
+    border-radius: 999px;
+}
+
+.ldash-bar-orange { background: #f5a623; }
+.ldash-bar-blue   { background: #4a90d9; }
+.ldash-bar-purple { background: #7b6fd4; }
+
+/* ------------------------------------------------------------------ */
+/* Responsive                                                          */
+/* ------------------------------------------------------------------ */
+
+@media (max-width: 600px) {
+    .lhero-actions { flex-direction: column; align-items: center; }
+    .ldash-stats   { grid-template-columns: 1fr; }
+    .lhero-subtitle br { display: none; }
+}
