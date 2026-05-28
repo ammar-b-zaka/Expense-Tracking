@@ -24,7 +24,7 @@
         </p>
         <div class="lhero-actions">
             <a href="{{ url_for('register') }}" class="lhero-btn">Create free account</a>
-            <a href="#" class="lhero-btn">See how it works</a>
+            <button id="btn-how-it-works" class="lhero-btn">See how it works</button>
         </div>
 
         <div class="lhero-dashboard">
@@ -104,4 +104,52 @@
     </div>
 </section>
 
+<div id="video-modal" class="vmodal-overlay" aria-hidden="true">
+    <div class="vmodal-box">
+        <button id="vmodal-close" class="vmodal-close" aria-label="Close">&times;</button>
+        <div class="vmodal-video">
+            <iframe
+                id="vmodal-iframe"
+                data-src="https://www.youtube.com/embed/dQw4w9WgXcQ?enablejsapi=1"
+                src=""
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+(function () {
+    const modal    = document.getElementById('video-modal');
+    const iframe   = document.getElementById('vmodal-iframe');
+    const openBtn  = document.getElementById('btn-how-it-works');
+    const closeBtn = document.getElementById('vmodal-close');
+
+    function openModal() {
+        iframe.src = iframe.dataset.src;
+        modal.classList.add('vmodal-active');
+        modal.setAttribute('aria-hidden', 'false');
+    }
+
+    function closeModal() {
+        modal.classList.remove('vmodal-active');
+        modal.setAttribute('aria-hidden', 'true');
+        iframe.src = '';
+    }
+
+    openBtn.addEventListener('click', openModal);
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) closeModal();
+    });
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeModal();
+    });
+})();
+</script>
 {% endblock %}
