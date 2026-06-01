@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block title %}Profile — Spendly{% endblock %}
+
+{% block content %}
+<div class="profile-page">
+
+    <div class="profile-header">
+        <div class="profile-avatar">
+            <i data-lucide="user"></i>
+        </div>
+        <div class="profile-info">
+            <h1 class="profile-name">{{ user["name"] }}</h1>
+            <p class="profile-email">{{ user["email"] }}</p>
+            <span class="profile-since">Member since {{ member_since }}</span>
+        </div>
+    </div>
+
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-icon"><i data-lucide="credit-card"></i></div>
+            <div class="stat-value">${{ "%.2f"|format(stats.total_spent) }}</div>
+            <div class="stat-label">Total Spent</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon"><i data-lucide="list"></i></div>
+            <div class="stat-value">{{ stats.expense_count }}</div>
+            <div class="stat-label">Expenses Recorded</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-icon"><i data-lucide="tag"></i></div>
+            <div class="stat-value">{{ stats.top_category or "—" }}</div>
+            <div class="stat-label">Top Category</div>
+        </div>
+    </div>
+
+    {% if stats.expense_count == 0 %}
+    <div class="profile-empty">
+        <p>No expenses recorded yet. Start tracking your spending!</p>
+        <a href="{{ url_for('add_expense') }}" class="btn-primary profile-empty-cta">
+            <i data-lucide="plus"></i> Add your first expense
+        </a>
+    </div>
+    {% endif %}
+
+</div>
+{% endblock %}

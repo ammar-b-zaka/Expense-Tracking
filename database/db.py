@@ -56,6 +56,26 @@ def get_user_by_id(user_id):
     return user
 
 
+def get_user_stats(user_id):
+    conn = get_db()
+    row = conn.execute(
+        "SELECT COALESCE(SUM(amount), 0.0) AS total_spent, COUNT(*) AS expense_count "
+        "FROM expenses WHERE user_id = ?",
+        (user_id,),
+    ).fetchone()
+    top = conn.execute(
+        "SELECT category FROM expenses WHERE user_id = ? "
+        "GROUP BY category ORDER BY SUM(amount) DESC LIMIT 1",
+        (user_id,),
+    ).fetchone()
+    conn.close()
+    return {
+        "total_spent":   row["total_spent"],
+        "expense_count": row["expense_count"],
+        "top_category":  top["category"] if top else None,
+    }
+
+
 def create_user(name, email, password_hash):
     conn = get_db()
     cursor = conn.cursor()
